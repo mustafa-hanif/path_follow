@@ -1,0 +1,209 @@
+[gd_scene load_steps=17 format=3 uid="uid://dydmfmq7v1st2"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_brbeb"]
+[ext_resource type="TileSet" uid="uid://c614bhqghhujv" path="res://tilemap.tres" id="1_qlq7s"]
+[ext_resource type="Texture2D" uid="uid://5o6qfi54ruhy" path="res://PNG/Objects/tribune_full.png" id="4_pmeng"]
+[ext_resource type="Script" path="res://Button.gd" id="4_r68ni"]
+[ext_resource type="Texture2D" uid="uid://c1a2msn5qoid5" path="res://PNG/Objects/tribune_empty.png" id="5_mmdkm"]
+[ext_resource type="Texture2D" uid="uid://bse7dhlsvh2d6" path="res://PNG/Objects/tribune_overhang_striped.png" id="6_bute7"]
+[ext_resource type="Texture2D" uid="uid://db2akl5304nc3" path="res://PNG/Objects/tribune_overhang_red.png" id="7_2yabh"]
+[ext_resource type="Texture2D" uid="uid://4pvkpfm2ysgb" path="res://PNG/Objects/DS DSi - Pokemon Mystery Dungeon Explorers of Time Darkness - Pichu Pikachu & Raichu_scaled_2x_pngcrushed.png" id="8_qgdbf"]
+[ext_resource type="Texture2D" uid="uid://vxcyn3hv4vqa" path="res://PNG/Objects/PlayStation 4 - Taiko no Tatsujin Drum Session - Hello Kitty.png" id="9_4tweh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icofd"]
+size = Vector2(61, 215)
+
+[sub_resource type="Animation" id="Animation_pgkhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(173, 641)]
+}
+
+[sub_resource type="Animation" id="Animation_x0fv2"]
+resource_name = "new_animation"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(173, 641), Vector2(173, 629)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3dxg1"]
+_data = {
+"RESET": SubResource("Animation_pgkhx"),
+"new_animation": SubResource("Animation_x0fv2")
+}
+
+[sub_resource type="Animation" id="Animation_sg8sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(424, 408, 256, 296)]
+}
+
+[sub_resource type="Animation" id="Animation_m0kdp"]
+resource_name = "clap"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(424, 408, 256, 296), Rect2(800, 408, 256, 296)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxb1o"]
+_data = {
+"RESET": SubResource("Animation_sg8sh"),
+"clap": SubResource("Animation_m0kdp")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_brbeb")
+
+[node name="Track1" type="TileMap" parent="."]
+tile_set = ExtResource("1_qlq7s")
+format = 2
+layer_0/name = "road2"
+layer_0/tile_data = PackedInt32Array(524287, 262144, 10, 196607, 262144, 10, 131083, 262144, 10, 458763, 262144, 10, 196618, 720896, 10, 196608, 720896, 12, 393226, 720896, 14, 393217, 720896, 15, 393218, 720896, 15, 393219, 720896, 15, 393220, 720896, 15, 393222, 720896, 15, 393223, 720896, 15, 393224, 720896, 15, 393225, 720896, 15, 196609, 720896, 11, 196610, 720896, 11, 196611, 720896, 11, 196612, 720896, 11, 196613, 720896, 11, 196614, 720896, 11, 196615, 720896, 11, 196616, 720896, 11, 196617, 720896, 11, 262154, 786432, 1, 327690, 786432, 1, 262145, 786432, 2, 327681, 786432, 2, 327682, 786432, 2, 327683, 786432, 2, 327684, 786432, 2, 327686, 786432, 2, 327687, 786432, 2, 327688, 786432, 2, 262152, 786432, 2, 262153, 786432, 2, 262151, 786432, 2, 262150, 786432, 2, 262149, 786432, 2, 262148, 786432, 2, 262147, 786432, 2, 262146, 786432, 2, 327689, 786432, 2, 327685, 786432, 2, 393221, 720896, 15, 131070, 1048576, 3, 589822, 1048576, 3, 524300, 1048576, 3, 65548, 1048576, 3, 65533, 786432, 5, 131069, 786432, 1, 196605, 786432, 1, 262141, 786432, 1, 327677, 786432, 1, 393213, 786432, 1, 458749, 786432, 1, 524285, 786432, 1, 589821, 786432, 1, 524286, 1048576, 3, 196606, 1048576, 3, 131071, 1048576, 3, 65534, 720896, 15, 65535, 720896, 15, 0, 720896, 15, 1, 720896, 15, 2, 720896, 15, 3, 720896, 15, 4, 720896, 15, 5, 720896, 15, 6, 720896, 15, 7, 720896, 15, 8, 720896, 15, 9, 720896, 15, 10, 720896, 15, 11, 720896, 15, 12, 720896, 15, 65547, 1048576, 3, 13, 786432, 4, 65549, 786432, 3, 131085, 786432, 3, 131084, 1048576, 3, 458764, 1048576, 3, 524299, 1048576, 3, 196621, 786432, 3, 262157, 786432, 3, 327693, 786432, 3, 393229, 786432, 3, 458765, 786432, 3, 524301, 786432, 3, 589837, 720896, 17, 589836, 720896, 11, 589835, 720896, 11, 589834, 720896, 11, 589833, 720896, 11, 589832, 720896, 11, 589831, 720896, 11, 589830, 720896, 11, 589829, 720896, 11, 589828, 720896, 11, 589827, 720896, 11, 589826, 720896, 11, 589825, 720896, 11, 589824, 720896, 11, 655359, 720896, 11, 655358, 720896, 11, 655357, 786432, 0, 589823, 1048576, 3, 262144, 786432, 3, 327680, 786432, 3, 393216, 720896, 16, 65532, 720896, 13, 131068, 720896, 13, 196604, 720896, 13, 262140, 720896, 13, 327676, 720896, 13, 393212, 720896, 13, 458748, 720896, 13, 524284, 720896, 13, 589820, 720896, 13, 655356, 720896, 13, 14, 720896, 13, 65550, 720896, 13, 131086, 720896, 13, 196622, 720896, 13, 262158, 720896, 13, 327694, 720896, 13, 393230, 720896, 13, 458766, 720896, 13, 524302, 720896, 13, 589838, 720896, 13)
+layer_1/name = "road1"
+layer_1/tile_data = PackedInt32Array(524286, 196608, 6, 589822, 131072, 6, 589823, 131072, 5, 524288, 196608, 10, 524289, 196608, 10, 524290, 196608, 10, 524291, 196608, 10, 524292, 0, 15, 524293, 196608, 10, 524294, 196608, 10, 524295, 196608, 10, 524296, 196608, 10, 524297, 196608, 10, 524298, 196608, 10, 458750, 262144, 11, 393214, 262144, 11, 327678, 262144, 11, 262142, 262144, 11, 196606, 262144, 6, 131070, 327680, 6, 131071, 327680, 5, 65536, 327680, 10, 65537, 327680, 10, 65538, 327680, 10, 65539, 327680, 10, 65540, 327680, 10, 65541, 327680, 10, 65542, 327680, 10, 65543, 327680, 10, 65544, 327680, 10, 65545, 327680, 10, 65546, 327680, 10, 65547, 327680, 4, 65548, 327680, 3, 131084, 262144, 3, 196620, 262144, 9, 262156, 262144, 9, 327692, 262144, 9, 393228, 262144, 9, 458764, 196608, 3, 524300, 131072, 3, 524299, 131072, 4, 458763, 196608, 9, 131083, 327680, 9, 524287, 196608, 11, 196607, 327680, 11, 131072, 327680, 12, 131073, 327680, 12, 131074, 327680, 12, 131075, 327680, 12, 131076, 327680, 12, 131077, 327680, 12, 131078, 327680, 12, 131079, 327680, 12, 131080, 327680, 12, 131081, 327680, 12, 131082, 327680, 12, 458762, 327680, 12, 458760, 327680, 12, 458759, 327680, 12, 458758, 327680, 12, 458757, 327680, 12, 458756, 196608, 7, 458755, 327680, 12, 458754, 327680, 12, 458753, 327680, 12, 458752, 327680, 12, 196619, 327680, 13, 262155, 327680, 13, 327691, 327680, 13, 393227, 327680, 13, 262143, 327680, 13, 327679, 327680, 13, 393215, 327680, 13, 458751, 327680, 13, 458761, 327680, 12)
+
+[node name="LapBox" type="Area2D" parent="Track1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Track1/LapBox" groups=["lap"]]
+position = Vector2(575.5, 1023.5)
+shape = SubResource("RectangleShape2D_icofd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(713, 641)
+scale = Vector2(-158.747, -11.1079)
+zoom = Vector2(0.85, 0.85)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 598.0
+offset_right = 706.0
+offset_bottom = 638.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Play
+"
+script = ExtResource("4_r68ni")
+
+[node name="Decoration" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Decoration"]
+position = Vector2(1056, 682)
+texture = ExtResource("4_pmeng")
+
+[node name="TribuneEmpty" type="Sprite2D" parent="Decoration"]
+position = Vector2(326, 642)
+texture = ExtResource("5_mmdkm")
+
+[node name="TribuneOverhangStriped" type="Sprite2D" parent="Decoration"]
+position = Vector2(1057, 509)
+texture = ExtResource("6_bute7")
+
+[node name="TribuneOverhangRed" type="Sprite2D" parent="Decoration"]
+position = Vector2(326, 489)
+texture = ExtResource("7_2yabh")
+
+[node name="DsDSi-PokemonMysteryDungeonExplorersOfTimeDarkness-PichuPikachu&RaichuScaled2xPngcrushed" type="Sprite2D" parent="Decoration"]
+position = Vector2(173, 641)
+scale = Vector2(1.23276, 1.23276)
+texture = ExtResource("8_qgdbf")
+region_enabled = true
+region_rect = Rect2(139, 813, 58, 61)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Decoration/DsDSi-PokemonMysteryDungeonExplorersOfTimeDarkness-PichuPikachu&RaichuScaled2xPngcrushed"]
+libraries = {
+"": SubResource("AnimationLibrary_3dxg1")
+}
+autoplay = "new_animation"
+
+[node name="DsDSi-PokemonMysteryDungeonExplorersOfTimeDarkness-PichuPikachu&RaichuScaled2xPngcrushed2" type="Sprite2D" parent="Decoration"]
+position = Vector2(233, 641)
+scale = Vector2(1.23276, 1.23276)
+texture = ExtResource("8_qgdbf")
+region_enabled = true
+region_rect = Rect2(60, 1476, 54, 52)
+
+[node name="DsDSi-PokemonMysteryDungeonExplorersOfTimeDarkness-PichuPikachu&RaichuScaled2xPngcrushed4" type="Sprite2D" parent="Decoration"]
+position = Vector2(355, 641)
+scale = Vector2(1.23276, 1.23276)
+texture = ExtResource("8_qgdbf")
+region_enabled = true
+region_rect = Rect2(266, 1987, 61, 58)
+
+[node name="DsDSi-PokemonMysteryDungeonExplorersOfTimeDarkness-PichuPikachu&RaichuScaled2xPngcrushed3" type="Sprite2D" parent="Decoration"]
+position = Vector2(289, 641)
+scale = Vector2(1.23276, 1.23276)
+texture = ExtResource("8_qgdbf")
+region_enabled = true
+region_rect = Rect2(201, 820, 51, 53)
+
+[node name="PlayStation4-TaikoNoTatsujinDrumSession-HelloKitty" type="Sprite2D" parent="Decoration"]
+position = Vector2(424, 581)
+scale = Vector2(0.232284, 0.232284)
+texture = ExtResource("9_4tweh")
+region_enabled = true
+region_rect = Rect2(424, 408, 256, 296)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Decoration/PlayStation4-TaikoNoTatsujinDrumSession-HelloKitty"]
+libraries = {
+"": SubResource("AnimationLibrary_jxb1o")
+}
+autoplay = "clap"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="Track1/LapBox" to="." method="_on_lap_box_area_entered"]
+[connection signal="area_exited" from="Track1/LapBox" to="." method="_on_lap_box_area_exited"]
+[connection signal="button_up" from="Control/HBoxContainer/VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

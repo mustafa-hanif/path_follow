@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://icumsb7eafal"]
+
+[ext_resource type="Script" path="res://Car.gd" id="1_bmtq4"]
+[ext_resource type="PackedScene" uid="uid://1qwtkxig64nb" path="res://outer_track.tscn" id="2_78gof"]
+[ext_resource type="PackedScene" uid="uid://c1i614o1aiqnu" path="res://inner_track.tscn" id="3_0elvy"]
+
+[node name="Car" type="Node"]
+script = ExtResource("1_bmtq4")
+
+[node name="OuterTrack" parent="." instance=ExtResource("2_78gof")]
+track_name = "Outer"
+
+[node name="InnerTrack" parent="." instance=ExtResource("3_0elvy")]
+track_name = "Inner"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://1qwtkxig64nb"]
+
+[ext_resource type="Script" path="res://inner_track.gd" id="1_83ihi"]
+[ext_resource type="Script" path="res://PathFollow2D.gd" id="1_fts1o"]
+[ext_resource type="Texture2D" uid="uid://by5ri831bx0bk" path="res://PNG/Cars/car_blue_small_3.png" id="2_warj3"]
+
+[sub_resource type="Curve2D" id="Curve2D_pikku"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 605, 186, 0, 0, 0, 0, 1330, 186, -42.9463, -46.2498, 42.9463, 46.2498, 1534, 225, 0, 0, 0, 0, 1591, 352, 0, 0, 0, 0, 1595, 864, 50.0253, -40.1147, -50.0253, 40.1147, 1541, 1022, 0, 0, 0, 0, 1395, 1081, 0, 0, 0, 0, 753, 1078, 0, 0, 0, 0, 302, 1082, 0, 0, 0, 0, 51, 1089, 58.5202, 56.6325, -58.5202, -56.6325, -129, 1049, 0, 0, 0, 0, -199, 896, 0, 0, 0, 0, -173, 373, -56.6325, 49.0815, 56.6325, -49.0815, -110, 225, 0, 0, 0, 0, 24, 182, 0, 0, 0, 0, 605, 186)
+}
+point_count = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5k55"]
+size = Vector2(70, 40)
+
+[node name="OuterTrack" type="Path2D"]
+curve = SubResource("Curve2D_pikku")
+script = ExtResource("1_83ihi")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(605, 186)
+script = ExtResource("1_fts1o")
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D"]
+rotation = 1.5708
+texture = ExtResource("2_warj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g5k55")
+
+[connection signal="area_exited" from="PathFollow2D/Area2D" to="." method="_on_area_2d_area_exited"]
