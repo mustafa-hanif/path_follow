@@ -16,8 +16,6 @@ func update_time(val):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	outer_track.disable()
-	inner_track.enable()
 	if (is_enemy):
 		timer.wait_time = time_to_switch
 		timer.start()
@@ -27,6 +25,10 @@ func _ready():
 	else:
 		outer_track.car_collide.connect(collision)
 		inner_track.car_collide.connect(collision)
+		
+	outer_track.disable()
+	inner_track.enable()
+	
 
 func _input(event):
 	if (!is_enemy):

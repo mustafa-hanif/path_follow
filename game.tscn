@@ -119,10 +119,10 @@ offset_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 665.0
-offset_top = 598.0
-offset_right = 706.0
-offset_bottom = 638.0
+offset_left = 598.0
+offset_top = 501.0
+offset_right = 754.0
+offset_bottom = 635.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
 layout_mode = 2
@@ -133,6 +133,18 @@ theme_override_font_sizes/font_size = 48
 text = "Play
 "
 script = ExtResource("4_r68ni")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Dodge the cars by 
+pressing SPACE"
+
+[node name="Score" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
 
 [node name="Decoration" type="Node" parent="."]
 
@@ -200,7 +212,7 @@ libraries = {
 autoplay = "clap"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.001
 one_shot = true
 
 [connection signal="area_entered" from="Track1/LapBox" to="." method="_on_lap_box_area_entered"]

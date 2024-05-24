@@ -14,7 +14,7 @@ func _ready():
 	area_2d.add_to_group("hero")
 	sprite_2d.texture = red_car
 	if (!is_enemy):
-		time_spent = lap_time / 2.5
+		time_spent = lap_time / 1.7
 
 func make_enemy():
 	sprite_2d.texture = blue_car
